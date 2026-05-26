@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="InventorySystem.API/InventorySystem.API.csproj" />
+  <Project Path="InventorySystem.Common/InventorySystem.Common.csproj" Id="955c04ed-7df2-4d51-a59e-e71db61e187e" />
+  <Project Path="InventorySystem.Data/InventorySystem.Data.csproj" Id="7ecbbf5a-35c6-40cf-bb86-3c27f52eb73f" />
+  <Project Path="InventorySystem.Helper/InventorySystem.Helper.csproj" Id="bc7d4923-e098-40f1-a2f3-8e17e376863a" />
+  <Project Path="InventorySystem.Repository/InventorySystem.Repository.csproj" Id="43f7d596-f104-44c9-b3a6-f376b498c902" />
+</Solution>
