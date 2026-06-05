@@ -35,5 +35,33 @@ namespace InventorySystem.API.Controllers
 
             return Ok("Category Added Successfully");
         }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var data = await _repository.GetByIdAsync(id);
+            if (data == null)
+            {
+                return NotFound();
+            }
+            return Ok(data);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(int id, CategoryDto dto)
+        {
+            if (id != dto.Id)
+            {
+                return BadRequest("Id mismatch.");
+            }
+
+            await _repository.UpdateAsync(dto);
+
+            return Ok(new
+            {
+                Message = "Category updated successfully."
+            });
+        }
+
     }
 }

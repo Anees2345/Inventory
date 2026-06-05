@@ -42,7 +42,8 @@ namespace InventorySystem.Repository.CategoryRepo
         {
             var entity = new Category
             {
-                Name = dto.Name
+                Name = dto.Name,
+                CompanyId = 6
             };
 
             await _context.Categories.AddAsync(entity);
@@ -53,14 +54,16 @@ namespace InventorySystem.Repository.CategoryRepo
         public async Task UpdateAsync(CategoryDto dto)
         {
             var entity = await _context.Categories
-                .FirstOrDefaultAsync(x => x.Id == dto.Id);
+                .FirstOrDefaultAsync(x => x.Id == dto.Id && !x.IsDeleted);
 
-            if (entity != null)
+            if (entity == null)
             {
-                entity.Name = dto.Name;
-
-                await _context.SaveChangesAsync();
+                throw new Exception("Category not found.");
             }
+
+            entity.Name = dto.Name;
+
+            await _context.SaveChangesAsync();
         }
 
         public async Task DeleteAsync(int id)
